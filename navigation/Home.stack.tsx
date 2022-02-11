@@ -4,6 +4,7 @@ import Items from '../Pages/Items';
 import Vendors from '../Pages/Vendors';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import More from '../Pages/More';
 
 function HomeStack() {
 
@@ -20,6 +21,8 @@ function HomeStack() {
                     return <Icon name='category' size={size} color={color}></Icon>;
                 } else if (route.name === 'Vendors') {
                     return <Icon name='people' size={size} color={color}></Icon>;
+                } else if (route.name === 'More') {
+                    return <Icon name='menu' size={size} color={color}></Icon>;
                 }
             },
             tabBarActiveTintColor: 'tomato',
@@ -29,6 +32,7 @@ function HomeStack() {
             <Tab.Screen name='Challans' component={Challans}></Tab.Screen>
             <Tab.Screen name='Items' component={Items}></Tab.Screen>
             <Tab.Screen name='Vendors' component={Vendors}></Tab.Screen>
+            <Tab.Screen name='More' component={More}></Tab.Screen>
         </Tab.Navigator >
     );
 }
