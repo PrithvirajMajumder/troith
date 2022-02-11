@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import ListItem from '../Atoms/ListItem';
 
 function More() {
     return (
-        <View >
+        <ScrollView >
             <ListItem
                 title='Profile'
                 avatar={{
@@ -32,7 +32,7 @@ function More() {
                     }
                 }}
             />
-        </View >
+        </ScrollView >
     );
 }
 
