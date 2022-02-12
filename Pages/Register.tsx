@@ -69,7 +69,7 @@ function Register({ navigation }: any) {
                         <Input
                             leftIcon={<Icon name="lock" color="tomato" size={20} />}
                             secureTextEntry
-                            placeholder="Is's your secret"
+                            placeholder="It's your secret"
                             value={password}
                             onChangeText={(text) => setPassword(text)}
                         />

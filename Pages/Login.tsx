@@ -63,7 +63,7 @@ const Login = ({ navigation }: any) => {
                                 leftIconContainerStyle={{}}
                                 rightIconContainerStyle={{}}
                                 secureTextEntry
-                                placeholder="Is's your secret"
+                                placeholder="It's your secret"
                                 value={password}
                                 onChangeText={(text: string) => setPassword(text)}
                             />
