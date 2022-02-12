@@ -55,6 +55,7 @@ const Login = ({ navigation }: any) => {
                                 leftIconContainerStyle={{}}
                                 rightIconContainerStyle={{}}
                                 placeholder="Eg. yourname@email.com"
+                                keyboardType={'email-address'}
                                 value={email}
                                 onChangeText={(text: string) => setEmail(text)}
                             />

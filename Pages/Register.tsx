@@ -64,6 +64,7 @@ function Register({ navigation }: any) {
                             leftIcon={<Icon name="email" color="tomato" size={20} />}
                             placeholder="Eg. yourname@email.com"
                             value={email}
+                            keyboardType={'email-address'}
                             onChangeText={(text) => setEmail(text)}
                         />
                         <Input
