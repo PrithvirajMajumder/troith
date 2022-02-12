@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import tw from "twrnc";
+import { AuthService } from '../Services/Auth.service';
 
 const Login = ({ navigation }: any) => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const styles = StyleSheet.create({
         container: {
@@ -13,6 +18,22 @@ const Login = ({ navigation }: any) => {
             justifyContent: 'space-between'
         },
     });
+
+    const login = () => {
+        setIsLoading(true);
+        AuthService.login({
+            email,
+            password,
+        })
+            .then(() => {
+                setIsLoading(false);
+                navigation.replace('Home');
+            })
+            .catch((error) => {
+                alert(error.message);
+                setIsLoading(false);
+            });
+    }
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -34,6 +55,8 @@ const Login = ({ navigation }: any) => {
                                 leftIconContainerStyle={{}}
                                 rightIconContainerStyle={{}}
                                 placeholder="Eg. yourname@email.com"
+                                value={email}
+                                onChangeText={(text: string) => setEmail(text)}
                             />
                             <Input
                                 leftIcon={<Icon name="lock" color="tomato" size={20} />}
@@ -41,6 +64,8 @@ const Login = ({ navigation }: any) => {
                                 rightIconContainerStyle={{}}
                                 secureTextEntry
                                 placeholder="Is's your secret"
+                                value={password}
+                                onChangeText={(text: string) => setPassword(text)}
                             />
                             <Button
                                 title='Login'
@@ -49,6 +74,8 @@ const Login = ({ navigation }: any) => {
                                     borderRadius: 3,
                                     marginVertical: 20
                                 }}
+                                onPress={login}
+                                loading={isLoading}
                             />
                             <Button
                                 title='Register'
