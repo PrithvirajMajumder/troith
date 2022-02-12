@@ -52,7 +52,7 @@ function Register({ navigation }: any) {
                     </View>
                 </View >
             </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView >
     );
 }
 

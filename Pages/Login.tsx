@@ -20,7 +20,7 @@ const Login = ({ navigation }: any) => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}
                     accessible={false}>
                     <View style={[tw`p-3`, styles.container]}>
-                        <View>
+                        <View style={tw`${Platform.OS === 'android' ? 'pt-10' : ''}`}>
                             <Text style={tw`text-gray-500 text-4xl font-bold`}>
                                 This ship will sail to a wolrd of easy bill making
                             </Text>
@@ -67,7 +67,7 @@ const Login = ({ navigation }: any) => {
                     </View >
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
-        </SafeAreaView>
+        </SafeAreaView >
     );
 }
 
