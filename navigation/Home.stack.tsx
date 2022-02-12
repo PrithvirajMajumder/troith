@@ -5,10 +5,17 @@ import Vendors from '../Pages/Vendors';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import More from '../Pages/More';
+import { Platform } from 'react-native';
 
 function HomeStack() {
 
     const Tab = createBottomTabNavigator();
+
+    const androidTabBarStyle = {
+        height: 70,
+        paddingBottom: 20,
+        paddingTop: 10
+    };
 
     return (
         <Tab.Navigator screenOptions={({ route }) => ({
@@ -25,6 +32,7 @@ function HomeStack() {
                     return <Icon name='menu' size={size} color={color}></Icon>;
                 }
             },
+            tabBarStyle: Platform.OS === 'android' ? androidTabBarStyle : {},
             tabBarActiveTintColor: 'tomato',
             tabBarInactiveTintColor: '#c3c3c3',
         })}>
