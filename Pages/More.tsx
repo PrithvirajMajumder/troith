@@ -1,8 +1,15 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 import ListItem from '../Atoms/ListItem';
+import { auth } from '../firebase';
 
-function More() {
+function More({ navigation }: any) {
+
+    const logout = () => {
+        signOut(auth).then(() => navigation.replace('Authentication'));
+    }
+
     return (
         <ScrollView >
             <ListItem
@@ -31,6 +38,16 @@ function More() {
                         name: 'business'
                     }
                 }}
+            />
+            <ListItem
+                title='Log out'
+                avatar={{
+                    icon: {
+                        type: 'material',
+                        name: 'logout',
+                    }
+                }}
+                onPress={() => logout()}
             />
         </ScrollView >
     );
