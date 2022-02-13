@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import ListItem from '../Atoms/ListItem';
 import { auth } from '../firebase';
 
@@ -20,6 +20,7 @@ function More({ navigation }: any) {
                         name: 'person'
                     }
                 }}
+                onPress={() => navigation.navigate('Profile')}
             />
             <ListItem
                 title='Unit of measurements'
@@ -29,6 +30,7 @@ function More({ navigation }: any) {
                         name: 'straighten'
                     }
                 }}
+                onPress={() => navigation.navigate('Units')}
             />
             <ListItem
                 title='Companies'
@@ -38,6 +40,7 @@ function More({ navigation }: any) {
                         name: 'business'
                     }
                 }}
+                onPress={() => navigation.navigate('Companies')}
             />
             <ListItem
                 title='Log out'

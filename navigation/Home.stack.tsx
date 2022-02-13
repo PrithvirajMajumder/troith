@@ -6,8 +6,30 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import More from '../Pages/More';
 import { Platform } from 'react-native';
+import Uoms from '../Pages/Uoms';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Companies from '../Pages/Companies';
+import ProfileSettings from '../Pages/ProfileSettings';
 
 function HomeStack() {
+
+    const Stack = createNativeStackNavigator();
+
+    return (
+        <Stack.Navigator initialRouteName='Tabs' screenOptions={{
+            headerBackTitle: 'Home',
+        }}>
+            <Stack.Screen options={{
+                headerShown: false,
+            }} name='Tabs' component={TabStack}></Stack.Screen>
+            <Stack.Screen name='Units' component={Uoms}></Stack.Screen>
+            <Stack.Screen name='Companies' component={Companies}></Stack.Screen>
+            <Stack.Screen name='Profile' component={ProfileSettings}></Stack.Screen>
+        </Stack.Navigator >
+    );
+}
+
+function TabStack() {
 
     const Tab = createBottomTabNavigator();
 

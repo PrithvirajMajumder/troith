@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import AuthStack from './navigation/Auth.stack';
-import HomeStack from './navigation/Home.stack';
-import SplashStack from './navigation/SplashSchreen.stack';
+import AuthStack from './Navigation/Auth.stack';
+import HomeStack from './Navigation/Home.stack';
+import SplashStack from './Navigation/SplashSchreen.stack';
 
 const AppStack = createNativeStackNavigator();
 
