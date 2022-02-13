@@ -1,27 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import tw from "twrnc";
-import { auth } from '../firebase';
+import { onSnapshot } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { FAB } from 'react-native-elements';
+import ListItem from '../Atoms/ListItem';
+import Company from '../Models/Company.model';
+import Uom from '../Models/Uom.model';
+import { CompanyService } from '../Services/Company.service';
+import { UomService } from '../Services/Uom.service';
+import CompanyUtils from '../Utils/Company.utils';
+import UomUtils from '../Utils/Uom.utils';
 
-function Companies({ navigation }: any) {
+function Uoms({ navigation }: any) {
+
+    const [companies, setCompanies] = useState<Company[]>([]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(CompanyService.getCompaniesQueryRef(), ((snapshot) => {
+            setCompanies(CompanyUtils.createUomsFromSnapshot(snapshot));
+        }));
+
+        return unsubscribe;
+    }, []);
 
     const styles = StyleSheet.create({
         container: {
             flex: 1,
             backgroundColor: '#fff',
-            alignItems: 'center',
-            justifyContent: 'center',
         },
     });
 
     return (
-        <View style={styles.container} >
-            <Text style={tw`text-gray-500 text-4xl font-bold`}>Companies</Text>
-            < StatusBar style="auto" />
+        <View style={styles.container}>
+            <ScrollView>
+                {
+                    companies.map((company) => {
+                        return <ListItem
+                            key={company.id}
+                            title={company.name}
+                            subtitle={`Address: ${company.address}`}
+                            hasAccent
+                        />
+                    })
+                }
+            </ScrollView>
+            <FAB
+                placement='right'
+                icon={{ name: 'add', color: 'white' }}
+                color='tomato'
+                onPress={() => navigation.navigate('CreateCompany')}
+            />
         </View>
     );
 }
 
-export default Companies;
+export default Uoms;

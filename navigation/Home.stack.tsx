@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Companies from '../Pages/Companies';
 import ProfileSettings from '../Pages/ProfileSettings';
 import CreateUom from '../Pages/CreateUom';
+import CreateCompany from '../Pages/CreateCompany';
 
 function HomeStack() {
 
@@ -28,6 +29,7 @@ function HomeStack() {
             <Stack.Screen name='Companies' component={Companies}></Stack.Screen>
             <Stack.Screen name='Profile' component={ProfileSettings}></Stack.Screen>
             <Stack.Screen options={{ headerBackTitle: 'Unit list', headerTitle: '' }} name='CreateUom' component={CreateUom} />
+            <Stack.Screen options={{ headerBackTitle: 'Companies', headerTitle: '' }} name='CreateCompany' component={CreateCompany} />
         </Stack.Navigator >
     );
 }
