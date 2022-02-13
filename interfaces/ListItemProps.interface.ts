@@ -4,6 +4,8 @@ export default interface ListItemProps {
     avatar?: ListItemAvatarProps;
     onPress?: () => void;
     onLongPress?: () => void;
+    hasAccent?: boolean;
+    accentColor?: string;
 }
 
 export interface ListItemIconProps {

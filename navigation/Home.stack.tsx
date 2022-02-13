@@ -10,6 +10,7 @@ import Uoms from '../Pages/Uoms';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Companies from '../Pages/Companies';
 import ProfileSettings from '../Pages/ProfileSettings';
+import CreateUom from '../Pages/CreateUom';
 
 function HomeStack() {
 
@@ -18,6 +19,7 @@ function HomeStack() {
     return (
         <Stack.Navigator initialRouteName='Tabs' screenOptions={{
             headerBackTitle: 'Home',
+            headerTintColor: 'tomato'
         }}>
             <Stack.Screen options={{
                 headerShown: false,
@@ -25,6 +27,7 @@ function HomeStack() {
             <Stack.Screen name='Units' component={Uoms}></Stack.Screen>
             <Stack.Screen name='Companies' component={Companies}></Stack.Screen>
             <Stack.Screen name='Profile' component={ProfileSettings}></Stack.Screen>
+            <Stack.Screen options={{ headerBackTitle: 'Unit list', headerTitle: '' }} name='CreateUom' component={CreateUom} />
         </Stack.Navigator >
     );
 }
