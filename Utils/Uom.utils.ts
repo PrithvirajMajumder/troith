@@ -1,4 +1,4 @@
-import { DocumentData, QuerySnapshot } from "firebase/firestore";
+import { DocumentData, DocumentSnapshot, QuerySnapshot } from "firebase/firestore";
 import Uom from "../Models/Uom.model";
 
 export default class UomUtils {
@@ -11,5 +11,14 @@ export default class UomUtils {
                 shortName: uomDoc.shortName,
             };
         })
+    }
+
+    public static createUomFromSnapshot = (snapshot: DocumentSnapshot<unknown>): Uom => {
+        const uomDoc: any = snapshot.data();
+        return {
+            id: snapshot.id,
+            name: uomDoc.name,
+            shortName: uomDoc.shortName,
+        }
     }
 }
