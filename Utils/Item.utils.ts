@@ -13,7 +13,7 @@ export default class ItemUtils {
                 name: itemDoc.name,
                 price: itemDoc.price,
                 quantity: itemDoc.quantity,
-                uom: UomUtils.createUomFromSnapshot(uomSnapshot),
+                uomObj: UomUtils.createUomFromSnapshot(uomSnapshot),
             };
 
             return item;

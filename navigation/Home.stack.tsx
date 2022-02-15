@@ -12,6 +12,8 @@ import Companies from '../Pages/Companies';
 import ProfileSettings from '../Pages/ProfileSettings';
 import CreateUom from '../Pages/CreateUom';
 import CreateCompany from '../Pages/CreateCompany';
+import CreateItem from '../Pages/CreateItem';
+import SlectUom from '../Modals/SelectUom';
 
 function HomeStack() {
 
@@ -30,6 +32,12 @@ function HomeStack() {
             <Stack.Screen name='Profile' component={ProfileSettings}></Stack.Screen>
             <Stack.Screen options={{ headerBackTitle: 'Unit list', headerTitle: '' }} name='CreateUom' component={CreateUom} />
             <Stack.Screen options={{ headerBackTitle: 'Companies', headerTitle: '' }} name='CreateCompany' component={CreateCompany} />
+            <Stack.Screen options={{ headerBackTitle: 'Items', headerTitle: '' }} name='CreateItem' component={CreateItem} />
+            <Stack.Group screenOptions={{
+                presentation: 'modal',
+            }}>
+                <Stack.Screen options={{ headerBackTitle: 'Select Unit', headerTitle: '' }} name='SelectUom' component={SlectUom} />
+            </Stack.Group>
         </Stack.Navigator >
     );
 }

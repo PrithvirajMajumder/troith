@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, refEqual, where, DocumentReference, doc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import Item from "../Models/Items.model";
 
@@ -20,6 +20,8 @@ export class ItemApiService {
 
     public createItem = (item: Item) => {
         item.uid = auth.currentUser?.uid;
+        item.uom = doc(collection(db, 'uoms'), `${item.uomObj?.id}`);
+        delete item['uomObj'];
 
         return addDoc(collection(db, 'items'), item);
     };

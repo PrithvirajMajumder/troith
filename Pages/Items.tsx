@@ -1,17 +1,18 @@
 import { onSnapshot } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { FAB } from 'react-native-elements';
 import ListItem from '../Atoms/ListItem';
 import { ItemService } from '../Services/Item.service';
 import ItemUtils from '../Utils/Item.utils';
 
-function Items() {
+function Items({ navigation }: any) {
 
     const [items, setItems] = useState<any[]>([]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(ItemService.getItemsQueryRef(), (async snapshot => {
-            setItems(await ItemUtils.createItemsFromSnapshot(snapshot));            
+            setItems(await ItemUtils.createItemsFromSnapshot(snapshot));
         }));
 
         return unsubscribe;
@@ -25,9 +26,17 @@ function Items() {
     });
 
     return (
-        <ScrollView style={styles.container} >
-            {items.map(item => <ListItem key={item.id} title={item.name} subtitle={`${item.quantity} ${item.uom.shortName}`} hasAccent accentColor={'tomato'} />)}
-        </ScrollView>
+        <View style={styles.container}>
+            <ScrollView>
+                {items.map(item => <ListItem key={item.id} title={item.name} subtitle={`${item.quantity} ${item.uomObj.shortName}`} hasAccent accentColor={'tomato'} />)}
+            </ScrollView>
+            <FAB
+                placement='right'
+                icon={{ name: 'add', color: 'white' }}
+                color='tomato'
+                onPress={() => navigation.navigate('CreateItem')}
+            />
+        </View>
     );
 }
 

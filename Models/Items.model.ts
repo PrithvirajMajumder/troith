@@ -1,3 +1,4 @@
+import { DocumentReference } from "firebase/firestore";
 import Uom from "./Uom.model";
 
 export default interface Item {
@@ -5,7 +6,8 @@ export default interface Item {
     description?: string;
     quantity: number;
     price: number;
-    uom: Uom;
+    uom?: DocumentReference;
+    uomObj?: Uom;
     id?: string;
     uid?: string;
 }
