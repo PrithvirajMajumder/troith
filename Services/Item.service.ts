@@ -1,6 +1,6 @@
 import { addDoc, collection, getDocs, query, refEqual, where, DocumentReference, doc } from "firebase/firestore";
 import { auth, db } from "../firebase";
-import Item from "../Models/Items.model";
+import Item from "../Models/Item.model";
 
 export class ItemApiService {
     public getItems = () => {

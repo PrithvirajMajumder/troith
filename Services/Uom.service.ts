@@ -1,6 +1,6 @@
-import { addDoc, collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from "../firebase";
-import Uom from "../Models/Uom.model"
+import Uom from "../Models/Uom.model";
 
 class UomApiService {
     public getUoms = () => {

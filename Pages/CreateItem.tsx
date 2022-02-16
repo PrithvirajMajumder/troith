@@ -3,7 +3,7 @@ import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Tex
 import { Button, FAB, Icon, Input } from 'react-native-elements';
 import tw from "twrnc";
 import Company from '../Models/Company.model';
-import Item from '../Models/Items.model';
+import Item from '../Models/Item.model';
 import Uom from '../Models/Uom.model';
 import { CompanyService } from '../Services/Company.service';
 import { ItemService } from '../Services/Item.service';

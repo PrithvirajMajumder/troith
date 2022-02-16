@@ -1,5 +1,5 @@
 import { DocumentData, getDoc, QuerySnapshot } from "firebase/firestore";
-import Item from "../Models/Items.model";
+import Item from "../Models/Item.model";
 import UomUtils from "./Uom.utils";
 
 export default class ItemUtils {
