@@ -1,4 +1,4 @@
-import { DocumentData, getDoc, QuerySnapshot } from "firebase/firestore";
+import { DocumentData, DocumentSnapshot, getDoc, QuerySnapshot } from "firebase/firestore";
 import Item from "../Models/Item.model";
 import UomUtils from "./Uom.utils";
 
@@ -20,5 +20,19 @@ export default class ItemUtils {
         });
 
         return await Promise.all(unresolved)
+    }
+
+    public static createItemFromSnapshot = async (snapshot: DocumentSnapshot<unknown>): Promise<Item> => {
+        const itemDoc: any = snapshot.data();        
+        const uomSnapshot = await getDoc(itemDoc.uom);
+
+        return {
+            id: snapshot.id,
+            description: itemDoc.description,
+            name: itemDoc.name,
+            price: itemDoc.price,
+            quantity: itemDoc.quantity,
+            uomObj: UomUtils.createUomFromSnapshot(uomSnapshot),
+        };
     }
 }
