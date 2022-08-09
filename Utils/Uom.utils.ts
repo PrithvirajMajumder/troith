@@ -5,6 +5,7 @@ export default class UomUtils {
     public static createUomsFromSnapshot = (snapshot: QuerySnapshot<DocumentData>): Uom[] => {
         return snapshot.docs.map(doc => {
             const uomDoc = { ...doc.data() };
+            
             return {
                 id: doc.id,
                 name: uomDoc.name,
@@ -15,6 +16,7 @@ export default class UomUtils {
 
     public static createUomFromSnapshot = (snapshot: DocumentSnapshot<unknown>): Uom => {
         const uomDoc: any = snapshot.data();
+
         return {
             id: snapshot.id,
             name: uomDoc.name,
