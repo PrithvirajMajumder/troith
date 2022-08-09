@@ -63,20 +63,6 @@ export default function ItemDetails(props: any) {
               {item.quantity} {item.uomObj?.shortName}
             </Text>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              margin: 10,
-            }}
-          >
-            <Text style={tw`text-gray-500 text-3xl font-bold`}>
-              Unit Of Measurement:
-            </Text>
-            <Text style={tw`text-orange-500 text-2xl font-bold`}>
-              {item.uomObj?.shortName}
-            </Text>
-          </View>
         </View>
       </View>
     );
@@ -97,10 +83,10 @@ const styles = StyleSheet.create({
     borderColor: "#fc9803",
     borderWidth: 0.5,
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingVertical: 45,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
