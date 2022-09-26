@@ -67,11 +67,13 @@ export default function ItemDetails(props: any) {
       </View>
     );
   } else {
-    <ActivityIndicator
-      size="large"
-      color="tomato"
-      style={styles.activityIndicator}
-    />;
+    return (
+      <ActivityIndicator
+        size="large"
+        color="tomato"
+        style={styles.activityIndicator}
+      />
+    );
   }
 }
 

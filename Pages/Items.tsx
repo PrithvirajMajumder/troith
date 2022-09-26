@@ -1,7 +1,7 @@
+import { FAB } from "@rneui/themed";
 import { onSnapshot } from "firebase/firestore";
-import React, { useEffect, useState} from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import { FAB } from "react-native-elements";
+import React, { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import ListItem from "../Atoms/ListItem";
 import { ItemService } from "../Services/Item.service";
 import ItemUtils from "../Utils/Item.utils";
@@ -32,9 +32,11 @@ function Items({ navigation }: any) {
       <ScrollView>
         {items.map((item) => (
           <ListItem
-            onPress={()=> navigation.navigate('ItemDetails',{
-                itemId: item.id
-            })}
+            onPress={() =>
+              navigation.navigate("ItemDetails", {
+                itemId: item.id,
+              })
+            }
             key={item.id}
             title={item.name}
             subtitle={`${item.quantity} ${item.uomObj.shortName}`}

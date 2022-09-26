@@ -1,6 +1,6 @@
+import { Avatar, Divider, ListItem as Item } from "@rneui/themed";
 import React, { FunctionComponent } from "react";
 import { Text, TouchableHighlight, View, StyleSheet } from "react-native";
-import { Avatar, Divider, Icon, ListItem as Item } from "react-native-elements";
 import ListItemProps from "../interfaces/ListItemProps.interface";
 
 function ListItem(props: ListItemProps) {

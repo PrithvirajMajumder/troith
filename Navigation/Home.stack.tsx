@@ -1,21 +1,22 @@
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Platform } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import SlectUom from "../Modals/SelectUom";
 import Bills from "../Pages/Bills";
 import Challans from "../Pages/Challans";
-import Items from "../Pages/Items";
-import Vendors from "../Pages/Vendors";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import More from "../Pages/More";
-import { Platform } from "react-native";
-import Uoms from "../Pages/Uoms";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Companies from "../Pages/Companies";
-import ProfileSettings from "../Pages/ProfileSettings";
-import CreateUom from "../Pages/CreateUom";
+import CreateBill from "../Pages/CreateBill";
 import CreateCompany from "../Pages/CreateCompany";
 import CreateItem from "../Pages/CreateItem";
-import SlectUom from "../Modals/SelectUom";
+import CreateUom from "../Pages/CreateUom";
 import CreateVendor from "../Pages/CreateVendor";
 import ItemDetails from "../Pages/ItemDetails";
+import Items from "../Pages/Items";
+import More from "../Pages/More";
+import ProfileSettings from "../Pages/ProfileSettings";
+import Uoms from "../Pages/Uoms";
+import Vendors from "../Pages/Vendors";
 
 function HomeStack() {
   const Stack = createNativeStackNavigator();
@@ -75,6 +76,13 @@ function HomeStack() {
       >
         {(props) => <ItemDetails {...props} />}
       </Stack.Screen>
+      <Stack.Screen
+        options={{
+          headerBackTitle: "Back",
+        }}
+        name="CreateBill"
+        component={CreateBill}
+      ></Stack.Screen>
     </Stack.Navigator>
   );
 }
