@@ -1,28 +1,37 @@
-import { View, Text } from "react-native";
-import React, { useState } from "react";
-import { Stepper } from "../Components/Stepper";
+import React, { useRef, useState } from "react";
+import { View } from "react-native";
 import SelectItems from "../Components/SelectItems";
-import SelectVendor from "../Components/SelectVendor";
 import SelectTaxation from "../Components/SelectTaxation";
-import { Button } from "@rneui/themed";
+import SelectVendor from "../Components/SelectVendor";
+import Step from "../Components/Step";
+import { Stepper } from "../Components/Stepper";
+import Vendor from "../Models/Vendor.model";
 
 const CreateBill = () => {
-  const [test, setTest] = useState<boolean>(false);
+  const stepperRef = useRef(null);
+  const [selectedVendor, setSelectedVendor] = useState<Vendor>();
+
   return (
-    <View>
-      <Stepper
-        steps={[
-          { component: <SelectVendor />, canActivate: true },
-          { component: <SelectItems />, canActivate: false },
-          { component: <SelectTaxation />, canActivate: false },
-        ]}
-      ></Stepper>
-      <Button
-        onPress={() => {
-          setTest(!test);
-        }}
-        title="Test"
-      />
+    <View style={{ backgroundColor: "#fff" }}>
+      <Stepper ref={stepperRef}>
+        <Step canActivate={true} icon={"user"}>
+          <SelectVendor
+            onSelectVendor={(vendor: Vendor) => {
+              //@ts-ignore
+              stepperRef.current.moveToNextStep();
+              setSelectedVendor(() => {
+                return vendor;
+              });
+            }}
+          />
+        </Step>
+        <Step canActivate={selectedVendor ? true : false} icon={"list"}>
+          <SelectItems />
+        </Step>
+        <Step canActivate={true} icon={"gavel"}>
+          <SelectTaxation />
+        </Step>
+      </Stepper>
     </View>
   );
 };
