@@ -5,11 +5,18 @@ import React, {
   useImperativeHandle,
   useState,
 } from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import StepConfig from "../interfaces/StepConfig.interface";
 //@ts-ignore
 import styled from "styled-components/native";
 import { getColorLuminance } from "../Utils/Color.utils";
+import { connectFirestoreEmulator, Firestore } from "firebase/firestore";
 
 const STEP_DIMENSION: number = 38;
 
@@ -31,7 +38,7 @@ export const Stepper = forwardRef((props: any, ref: any) => {
       if (!React.isValidElement(element)) {
         return;
       }
-      
+
       const elementProps = element.props;
       const step: StepConfig = {
         //@ts-ignore
@@ -93,7 +100,7 @@ export const Stepper = forwardRef((props: any, ref: any) => {
         <View style={styles.stepTrail} />
         {steps.length ? (
           <View
-          //TODO: make it a styled component
+            //TODO: make it a styled component
             style={{
               height: 3,
               backgroundColor: "#ff6347",
@@ -177,8 +184,9 @@ const styles = StyleSheet.create({
     left: 16,
   },
   activatedStepContent: {
-    height: "100%",
+    height: Dimensions.get("window").height - 160,
     width: "100%",
+    position: "relative",
   },
 });
 

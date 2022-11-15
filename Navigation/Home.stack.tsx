@@ -90,12 +90,6 @@ function HomeStack() {
 function TabStack() {
   const Tab = createBottomTabNavigator();
 
-  const androidTabBarStyle = {
-    height: 70,
-    paddingBottom: 20,
-    paddingTop: 10,
-  };
-
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -112,9 +106,14 @@ function TabStack() {
             return <Icon name="menu" size={size} color={color}></Icon>;
           }
         },
-        tabBarStyle: Platform.OS === "android" ? androidTabBarStyle : {},
+        tabBarStyle: {
+          backgroundColor: "#000000",
+          height: 100,
+        },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "#c3c3c3",
+        tabBarActiveBackgroundColor: "#000000",
+        tabBarShowLabel: false,
       })}
     >
       <Tab.Screen name="Bills" component={Bills}></Tab.Screen>
