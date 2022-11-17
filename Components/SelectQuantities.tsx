@@ -1,14 +1,18 @@
 import { View, Text } from "react-native";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Item from "../Models/Item.model";
+import { CreateBillContext, createBillContext } from "../Pages/CreateBill";
 
-const SelectQuantities = (props: any) => {
+const SelectQuantities = () => {
+  const state = useContext<CreateBillContext>(createBillContext);
+
   useEffect(() => {
-    console.log("props changed: ", props);
-  }, [props]);
+    console.log("State in child: ", state.selectedItems);
+  }, [state]);
+
   return (
     <View>
-      <Text>items: {props.items.length}</Text>
+      <Text>items: {state.selectedItems.length}</Text>
     </View>
   );
 };

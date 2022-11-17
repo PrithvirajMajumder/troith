@@ -9,10 +9,10 @@ import { ItemService } from "../Services/Item.service";
 import ItemUtils from "../Utils/Item.utils";
 
 const SelectItems = (props: {
-  onSubmit: (items: Item[]) => void;
+  onSelectItems: (items: Item[]) => void;
   selectedItems: Item[];
 }) => {
-  const { onSubmit, selectedItems } = props;
+  const { onSelectItems, selectedItems } = props;
   const [items, setItems] = useState<Item[]>([]);
   const [searchItems, setSearchedItems] = useState<Item[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -110,7 +110,7 @@ const SelectItems = (props: {
       {searchItems.filter((searchItem) => searchItem.isSelected).length ? (
         <FAB
           onPress={() => {
-            onSubmit(searchItems.filter((searchItem) => searchItem.isSelected));
+            onSelectItems(searchItems.filter((searchItem) => searchItem.isSelected));
           }}
           placement="right"
           color="tomato"

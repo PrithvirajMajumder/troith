@@ -4,7 +4,7 @@ import { View } from "react-native";
 const Step = (props: {
   canActivate: (() => boolean) | boolean;
   icon?: ReactNode | string;
-  children?: ReactElement;
+  children?: ReactElement | null;
 }) => <View>{props.children}</View>;
 
 export default Step;
